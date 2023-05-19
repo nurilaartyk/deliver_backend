@@ -21,5 +21,6 @@
 @endif
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"/>
+
 </body>
 </html>

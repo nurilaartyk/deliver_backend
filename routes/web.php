@@ -25,9 +25,9 @@ Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index']
 Route::post('/contact/create', [\App\Http\Controllers\ContactController::class, 'update'])->name('contact.store');
 Route::get('/about', [\App\Http\Controllers\HomeController::class, 'index'])->name('about.index');
 Route::get('/favorite', [\App\Http\Controllers\FavoriteController::class, 'index'])->name('favorite.index');
-Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
     Route::get('/menu/{restauran}/order', [\App\Http\Controllers\MenuController::class, 'order'])->name('menu.order');
     Route::get('/profile/info', [\App\Http\Controllers\ProfileController::class, 'info'])->name('profile.info');
     Route::post('/profile/info/save', [\App\Http\Controllers\ProfileController::class, 'info_update'])->name('profile.info.data');
