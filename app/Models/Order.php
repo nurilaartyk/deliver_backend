@@ -20,4 +20,9 @@ class Order extends Model
     {
         return $this->belongsTo(Menu::class);
     }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
 }

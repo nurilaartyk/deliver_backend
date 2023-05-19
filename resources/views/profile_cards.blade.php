@@ -37,8 +37,7 @@
         </div>
     </section>
 
-    <div id="addCard"
-         class="fixed overflow-x-hidden overflow-y-auto top-0 left-0 flex items-center justify-center bg-black/50 w-full h-full hidden">
+    <div id="addCard" class="fixed overflow-x-hidden overflow-y-auto top-0 left-0 flex items-center justify-center bg-black/50 w-full h-full hidden">
         <div class="mb-[50px] w-[768px] rounded-[40px] bg-white mt-[20px] shadow-lg">
             <div class="rounded-t-[40px] bg-[#EB5757] p-5 text-center font-bold text-white">Account Information</div>
             <div class="p-[44px] pb-[80px]">
@@ -46,33 +45,22 @@
                     @csrf
                     <div class="mb-[35px] grid grid-cols-2 gap-[20px]">
                         <div>
-                            <input name="number" type="text"
-                                   class="h-[57px] w-full rounded-[10px] border bg-[#EAEAEA] px-[25px]"
-                                   placeholder="Card Number"/>
+                            <input name="number" type="text" class="h-[57px] w-full rounded-[10px] border bg-[#EAEAEA] px-[25px]" placeholder="Card Number"/>
                         </div>
                         <div>
-                            <input name="name" type="text"
-                                   class="h-[57px] w-full rounded-[10px] border bg-[#EAEAEA] px-[25px]"
-                                   placeholder="Name"/>
+                            <input name="name" type="text" class="h-[57px] w-full rounded-[10px] border bg-[#EAEAEA] px-[25px]" placeholder="Name"/>
                         </div>
                     </div>
                     <div class="mb-[35px] grid grid-cols-2 gap-[20px]">
                         <div>
-                            <input name="date" type="text"
-                                   class="h-[57px] w-full rounded-[10px] border bg-[#EAEAEA] px-[25px]"
-                                   placeholder="Date"/>
+                            <input name="date" type="text" class="h-[57px] w-full rounded-[10px] border bg-[#EAEAEA] px-[25px]" placeholder="Date"/>
                         </div>
                         <div>
-                            <input name="cvv" type="text"
-                                   class="h-[57px] w-full rounded-[10px] border bg-[#EAEAEA] px-[25px]"
-                                   placeholder="CVV"/>
+                            <input name="cvv" type="password" class="h-[57px] w-full rounded-[10px] border bg-[#EAEAEA] px-[25px]" placeholder="CVV"/>
                         </div>
                     </div>
                     <div class="flex justify-center">
-                        <button type="submit"
-                                class="h-[45px] w-[240px] rounded-[10px] bg-[#EB5757] font-medium text-white">Save
-                            Changes
-                        </button>
+                        <button type="submit" class="h-[45px] w-[240px] rounded-[10px] bg-[#EB5757] font-medium text-white">Save Changes</button>
                     </div>
                 </form>
             </div>

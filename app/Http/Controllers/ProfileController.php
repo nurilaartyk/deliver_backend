@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -14,6 +15,19 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         return view('profile_info')->with(compact('user'));
+    }
+
+    public function update_password(Request $request)
+    {
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Password changed successfully!");
     }
 
     public function info_update(Request $request)
@@ -42,7 +56,7 @@ class ProfileController extends Controller
     public function favorite_add(Menu $menu)
     {
         auth()->user()->favorite($menu);
-        return redirect()->route('profile.favorite');
+        return redirect()->back();
     }
 
     public function favorite_delete(Menu $menu)

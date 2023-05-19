@@ -19,21 +19,26 @@ Auth::routes();
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/menu', [\App\Http\Controllers\MenuController::class, 'index'])->name('menu.index');
 Route::get('/menu/{restauran}', [\App\Http\Controllers\MenuController::class, 'show'])->name('menu.show');
-Route::get('/menu/{restauran}/order', [\App\Http\Controllers\MenuController::class, 'order'])->name('menu.order');
 Route::get('/recipe', [\App\Http\Controllers\RecipeController::class, 'index'])->name('recipe.index');
 Route::get('/recipe/{recipe}', [\App\Http\Controllers\RecipeController::class, 'show'])->name('recipe.show');
-Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'index'])->name('contact.index');
+Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact/create', [\App\Http\Controllers\ContactController::class, 'update'])->name('contact.store');
 Route::get('/about', [\App\Http\Controllers\HomeController::class, 'index'])->name('about.index');
 Route::get('/favorite', [\App\Http\Controllers\FavoriteController::class, 'index'])->name('favorite.index');
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
-Route::get('/profile/info', [\App\Http\Controllers\ProfileController::class, 'info'])->name('profile.info');
-Route::post('/profile/info/save', [\App\Http\Controllers\ProfileController::class, 'info_update'])->name('profile.info.data');
-Route::get('/profile/cards', [\App\Http\Controllers\ProfileController::class, 'cards'])->name('profile.cards');
-Route::post('/profile/cards/add', [\App\Http\Controllers\ProfileController::class, 'cards_add'])->name('profile.cards.add');
-Route::get('/profile/orders', [\App\Http\Controllers\ProfileController::class, 'orders'])->name('profile.orders');
-Route::get('/profile/favorite', [\App\Http\Controllers\ProfileController::class, 'favorite'])->name('profile.favorite');
-Route::post('/profile/favorite/{menu}', [\App\Http\Controllers\ProfileController::class, 'favorite_add'])->name('profile.favorite.add');
-Route::post('/profile/unfavorite/{menu}', [\App\Http\Controllers\ProfileController::class, 'favorite_delete'])->name('profile.favorite.delete');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/menu/{restauran}/order', [\App\Http\Controllers\MenuController::class, 'order'])->name('menu.order');
+    Route::get('/profile/info', [\App\Http\Controllers\ProfileController::class, 'info'])->name('profile.info');
+    Route::post('/profile/info/save', [\App\Http\Controllers\ProfileController::class, 'info_update'])->name('profile.info.data');
+    Route::post('/profile/info/password', [\App\Http\Controllers\ProfileController::class, 'update_password'])->name('profile.info.password');
+    Route::get('/profile/cards', [\App\Http\Controllers\ProfileController::class, 'cards'])->name('profile.cards');
+    Route::post('/profile/cards/add', [\App\Http\Controllers\ProfileController::class, 'cards_add'])->name('profile.cards.add');
+    Route::get('/profile/orders', [\App\Http\Controllers\ProfileController::class, 'orders'])->name('profile.orders');
+    Route::get('/profile/favorite', [\App\Http\Controllers\ProfileController::class, 'favorite'])->name('profile.favorite');
+    Route::post('/profile/favorite/{menu}', [\App\Http\Controllers\ProfileController::class, 'favorite_add'])->name('profile.favorite.add');
+    Route::post('/profile/unfavorite/{menu}', [\App\Http\Controllers\ProfileController::class, 'favorite_delete'])->name('profile.favorite.delete');
+});
 
 
 Route::name('admin.')->prefix('admin')->group(function () {

@@ -22,6 +22,7 @@ class MenuFactory extends Factory
             'cost' => 5000,
             'image' => 'https://sayavegan.com/wp-content/uploads/2022/05/DSC05908-removebg-preview.png',
             'restauran_id' => 1,
+            'category_id' => 1,
         ];
     }
 }

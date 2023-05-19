@@ -14,11 +14,19 @@
                     <form class="absolute top-[25px] left-[25px]" method="post" action="{{ route('profile.favorite.add', $menu) }}">
                         @csrf
                         <button type="submit">
-                            <img src="{{ asset('assets/img/favorite.svg') }}" alt="" />
+                            @auth
+                                @if($menu->isFavoritedBy(auth()->user()))
+                                    <img src="{{ asset('assets/img/favorite_full.svg') }}" alt=""/>
+                                @else
+                                    <img src="{{ asset('assets/img/favorite.svg') }}" alt=""/>
+                                @endif
+                            @else
+                                <img src="{{ asset('assets/img/favorite.svg') }}" alt=""/>
+                            @endauth
                         </button>
                     </form>
-                    <a href="{{ route('menu.order', $menu) }}">
-                        <img class="h-[250px] object-cover object-center" src="{{ $menu->image }}" alt="img" />
+                    <a href="javascript:show()">
+                        <img class="h-[250px] object-cover object-center" src="{{ $menu->image }}" alt="img"/>
                     </a>
                     <div class="px-[40px] py-5">
                         <h5 class="mb-2 text-[16px] tracking-tight text-gray-900">{{ $menu->name }}</h5>
@@ -118,6 +126,77 @@
         <img src="{{ asset('assets/img/last_section.svg') }}" alt="img">
     </section>
 
+    <div id="addCart" class="fixed left-0 top-0 flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/50 hidden">
+        <div class="relative w-[1400px] overflow-hidden bg-white">
+            <a href="javascript:hidden()">
+                <div class="absolute top-[50px] text-[40px] right-[50px] text-white">&#x2715</div>
+            </a>
+            <div class="h-[160px] w-full bg-[#EB5757]"></div>
+            <div class="ml-[92px] w-[520px] pt-[63px]">
+                <div class="mb-[200px] text-[42px] font-bold">Beshbarmak</div>
+                <div class="mb-[60px] flex flex-col gap-[18px]">
+                    <div class="flex items-center gap-[30px]">
+                        <div class="flex gap-[12px]">
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
+                        </div>
+                        <div class="text-[18px] font-bold">sweetness</div>
+                    </div>
+                    <div class="flex items-center gap-[30px]">
+                        <div class="flex gap-[12px]">
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
+                        </div>
+                        <div class="text-[18px] font-bold">sweetness</div>
+                    </div>
+                    <div class="flex items-center gap-[30px]">
+                        <div class="flex gap-[12px]">
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
+                        </div>
+                        <div class="text-[18px] font-bold">sweetness</div>
+                    </div>
+                    <div class="flex items-center gap-[30px]">
+                        <div class="flex gap-[12px]">
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
+                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
+                        </div>
+                        <div class="text-[18px] font-bold">sweetness</div>
+                    </div>
+                </div>
+                <div class="mb-[100px] text-[32px] font-bold">5800KZT</div>
+                <div class="mb-[82px] text-[20px]">
+                    <div class="mb-[20px] font-bold">Details</div>
+                    <div class="line-clamp-5">Beshbarmak is prepared by first boiling a piece of meat, such as the rump of a horse, or a rack of lamb, or kazy or chuchuk horsemeat sausage. In warm seasons, beshbarmak is usually made with mutton. The noodle dough is made from flour, water, eggs, and salt, and rested for 40 minutes.</div>
+                </div>
+                <div class="flex gap-[45px] pb-[200px]">
+                    <button class="flex items-center gap-[33px] border border-black p-[26px] text-[23px]">
+                        <div>&minus;</div>
+                        <div>Add</div>
+                    </button>
+                    <div class="flex items-center rounded text-[23px]">
+                        <button type="button" class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75">&minus;</button>
+                        <input name="count" type="number" value="1" class="h-10 w-16 border-transparent text-center text-[23px] [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" />
+                        <button type="button" class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75">&plus;</button>
+                    </div>
+                </div>
+            </div>
+            <img class="absolute right-0 top-1/2 w-[1000px] -translate-y-1/2 translate-x-1/4" src="https://www.pngfind.com/pngs/m/54-546688_healthy-food-png-transparent-png.png" alt="img" />
+        </div>
+    </div>
+
     <style>
         .selected {
             background-color: #EB5757;
@@ -151,4 +230,15 @@
             scrollbar-width: none;
         }
     </style>
+
+    <script>
+        function show() {
+            const addCart = document.querySelector("#addCart")
+            addCart.classList.remove("hidden")
+        }
+        function hidden() {
+            const addCart = document.querySelector("#addCart")
+            addCart.classList.add("hidden")
+        }
+    </script>
 @endsection

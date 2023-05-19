@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Alemtime</title>
+    <title>Tandyr</title>
+    <link rel="favicon" href="{{ asset('assets/img/favicon.png') }}">
     @vite('resources/css/app.css')
 </head>
 

@@ -23,14 +23,14 @@
                 <img src="https://sayavegan.com/wp-content/uploads/2022/05/DSC05908-removebg-preview.png" alt="product-image" class="w-full rounded-lg sm:w-40"/>
                 <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                     <div class="flex flex-col justify-center">
-                        <h2 class="text-lg font-bold text-gray-900">Beshbarmak</h2>
-                        <p class="mt-1 text-xs text-gray-700">Lorem impsum</p>
+                        <h2 class="text-lg font-bold text-gray-900">{{ $favorite->name }}</h2>
+                        <p class="mt-1 text-xs text-gray-700 w-[200px] truncate">{{ $favorite->body }}</p>
                     </div>
                     <div class="flex items-center">
-                        <p class="text-sm">categoryName</p>
+                        <p class="text-sm">{{ $favorite->category->name }}</p>
                     </div>
                     <div class="flex items-center">
-                        <p class="text-sm">5000KZT</p>
+                        <p class="text-sm">{{ $favorite->cost }}KZT</p>
                     </div>
                     <form class="flex items-center" action="{{ route('profile.favorite.delete', $favorite) }}"
                           method="post">
