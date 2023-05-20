@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('number');
             $table->string('date');
             $table->string('cvv');
+            $table->string('name');
             $table->integer('user_id');
             $table->timestamps();
         });

@@ -28,6 +28,9 @@ Route::get('/favorite', [\App\Http\Controllers\FavoriteController::class, 'index
 
 Route::middleware('auth')->group(function () {
     Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/up/{cart}', [\App\Http\Controllers\CartController::class, 'up'])->name('cart.up');
+    Route::post('/cart/down/{cart}', [\App\Http\Controllers\CartController::class, 'down'])->name('cart.down');
+    Route::post('/cart/delete/{cart}', [\App\Http\Controllers\CartController::class, 'delete'])->name('cart.delete');
     Route::get('/menu/{restauran}/order', [\App\Http\Controllers\MenuController::class, 'order'])->name('menu.order');
     Route::get('/profile/info', [\App\Http\Controllers\ProfileController::class, 'info'])->name('profile.info');
     Route::post('/profile/info/save', [\App\Http\Controllers\ProfileController::class, 'info_update'])->name('profile.info.data');

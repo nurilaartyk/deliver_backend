@@ -79,6 +79,7 @@ class ProfileController extends Controller
             'number' => $request->number,
             'date' => $request->date,
             'cvv' => $request->cvv,
+            'name' => $request->name,
             'user_id' => $user_id,
         ]);
         return redirect()->route('profile.cards');

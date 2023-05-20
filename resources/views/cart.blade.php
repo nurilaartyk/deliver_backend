@@ -13,7 +13,7 @@
             </a>
         </div>
         <div class="text-[18px] font-medium">Shopping cart</div>
-        <div class="mb-[30px] text-[14px] font-medium">You have 3 item in your cart</div>
+        <div class="mb-[30px] text-[14px] font-medium">You have {{ $count_cart }} item in your cart</div>
         <div class="mb-[65px] flex flex-col gap-[24px]">
             @foreach($carts as $cart)
                 <div class="flex w-full justify-between rounded-[15px] bg-white p-6 shadow-lg">
@@ -24,12 +24,26 @@
                             <p class="mt-1 w-[200px] truncate text-xs text-gray-700">{{ $cart->menu->body }}</p>
                         </div>
                         <div class="flex items-center">
-                            <p class="text-sm">{{ $cart->menu->category->name }}</p>
+                            <p class="text-[20px]">{{ $cart->count }}</p>
+                            <div class="flex flex-col text-[20px]">
+                                <form action="{{ route('cart.up', $cart) }}" method="post">
+                                    @csrf
+                                    <button type="submit">
+                                        <i class="fas fa-caret-up"></i>
+                                    </button>
+                                </form>
+                                <form action="{{ route('cart.down', $cart) }}" method="post">
+                                    @csrf
+                                    <button type="submit">
+                                        <i class="fas fa-caret-down"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                         <div class="flex items-center">
                             <p class="text-sm">{{ $cart->menu->cost }}KZT</p>
                         </div>
-                        <form class="flex items-center" action="{{ route('profile.favorite.delete', $cart) }}" method="post">
+                        <form class="flex items-center" action="{{ route('cart.delete', $cart) }}" method="post">
                             @csrf
                             <button type="submit">
                                 <img src="{{ asset('assets/img/delete.png') }}" alt="img"/>
@@ -41,7 +55,7 @@
         </div>
         <div class="flex justify-end">
             <button class="flex h-[60px] w-[350px] items-center justify-between rounded-[12px] bg-[#EB5757] px-[30px] font-medium text-white">
-                <div>5000KZT</div>
+                <div>{{ $sum_cart }}KZT</div>
                 <div class="flex items-center">
                     Checkout
                     <i class="far fa-arrow-right ml-[10px] text-[12px]"></i>

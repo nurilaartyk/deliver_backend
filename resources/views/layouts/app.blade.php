@@ -7,6 +7,9 @@
     <title>Tandyr</title>
     <link rel="icon" href="{{ asset('assets/img/favicon.png') }}">
     @vite('resources/css/app.css')
+    @livewireStyles
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
 
@@ -19,6 +22,9 @@
 @if(!Route::is('login') && !Route::is('register'))
     <x-footer/>
 @endif
+
+@livewireScripts
+@livewire('livewire-ui-modal')
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"/>
 
