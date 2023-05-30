@@ -15,6 +15,8 @@ class RecipeController extends Controller
 
     public function show()
     {
+        $recipes = Recipe::all();
+        dd($recipes);
         return view('recipe-read');
     }
 }
