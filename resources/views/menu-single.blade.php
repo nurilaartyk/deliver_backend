@@ -25,7 +25,7 @@
                             @endauth
                         </button>
                     </form>
-                    <a href="javascript:show()">
+                    <a href="javascript:show({{$menu}})">
                         <img class="h-[250px] object-cover object-center" src="{{ $menu->image }}" alt="img"/>
                     </a>
                     <div class="px-[40px] py-5">
@@ -39,83 +39,60 @@
 
     <x-contact-us/>
 
-    <section class="mx-auto w-[1250px] mt-[190px]">
-        <img src="{{ asset('assets/img/last_section.svg') }}" alt="img">
-    </section>
+    <x-get-start/>
 
-    <div id="addCart" class="fixed left-0 top-0 flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/50 hidden">
+    <div id="addCart" class="fixed left-0 top-0 flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/50 hidden" style="z-index: 9999;">
         <div class="relative w-[1400px] overflow-hidden bg-white">
             <a href="javascript:hidden()">
                 <div class="absolute top-[50px] text-[40px] right-[50px] text-white">&#x2715</div>
             </a>
             <div class="h-[160px] w-full bg-[#EB5757]"></div>
             <div class="ml-[92px] w-[520px] pt-[63px]">
-                <div class="mb-[200px] text-[42px] font-bold">Beshbarmak</div>
+                <div id="nameMenu" class="mb-[200px] text-[42px] font-bold"></div>
                 <div class="mb-[60px] flex flex-col gap-[18px]">
                     <div class="flex items-center gap-[30px]">
-                        <div class="flex gap-[12px]">
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
-                        </div>
+                        <div id="sweetnessMenu" class="flex gap-[12px]"></div>
                         <div class="text-[18px] font-bold">sweetness</div>
                     </div>
                     <div class="flex items-center gap-[30px]">
-                        <div class="flex gap-[12px]">
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
-                        </div>
-                        <div class="text-[18px] font-bold">sweetness</div>
+                        <div id="acidityMenu" class="flex gap-[12px]"></div>
+                        <div class="text-[18px] font-bold">acidity</div>
                     </div>
                     <div class="flex items-center gap-[30px]">
-                        <div class="flex gap-[12px]">
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
-                        </div>
-                        <div class="text-[18px] font-bold">sweetness</div>
+                        <div id="aromaticityMenu" class="flex gap-[12px]"></div>
+                        <div class="text-[18px] font-bold">aromaticity</div>
                     </div>
                     <div class="flex items-center gap-[30px]">
-                        <div class="flex gap-[12px]">
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full bg-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
-                            <div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>
-                        </div>
-                        <div class="text-[18px] font-bold">sweetness</div>
+                        <div id="oillinessMenu" class="flex gap-[12px]"></div>
+                        <div class="text-[18px] font-bold">oilliness</div>
                     </div>
                 </div>
-                <div class="mb-[100px] text-[32px] font-bold">5800KZT</div>
+                <div id="costMenu" class="mb-[100px] text-[32px] font-bold"></div>
                 <div class="mb-[82px] text-[20px]">
                     <div class="mb-[20px] font-bold">Details</div>
-                    <div class="line-clamp-5">Beshbarmak is prepared by first boiling a piece of meat, such as the rump of a horse, or a rack of lamb, or kazy or chuchuk horsemeat sausage. In warm seasons, beshbarmak is usually made with mutton. The noodle dough is made from flour, water, eggs, and salt, and rested for 40 minutes.</div>
+                    <div id="bodyMenu" class="line-clamp-5"></div>
                 </div>
-                <div class="flex gap-[45px] pb-[200px] items-center">
-                    <button class="flex items-center gap-[33px] border border-black p-[26px] text-[23px]">
-                        <div>&plus;</div>
-                        <div>Add</div>
-                    </button>
-                    <div class="custom-number-input h-10 w-32">
-                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-                            <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-full w-20 rounded-l cursor-pointer outline-none">
-                                <span class="m-auto text-2xl font-thin">−</span>
-                            </button>
-                            <input name="count" type="number" class="outline-none focus:outline-none text-center w-full font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700 outline-none" value="0"/>
-                            <button data-action="increment" class="text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
-                                <span class="m-auto text-2xl font-thin">+</span>
-                            </button>
+                <form id="formMenu" action="{{ route('cart.add', 0) }}" method="post">
+                    @csrf
+                    <div class="flex gap-[45px] pb-[200px] items-center">
+                        <button class="flex items-center gap-[33px] border border-black p-[26px] text-[23px]">
+                            <div>+</div>
+                            <div>Add</div>
+                        </button>
+                        <div class="custom-number-input h-10 w-32">
+                            <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                                <button type="button" data-action="decrement" class="text-gray-600 hover:text-gray-700 h-full w-20 rounded-l cursor-pointer outline-none">
+                                    <span class="m-auto text-2xl font-thin">−</span>
+                                </button>
+                                <input name="count_cart" type="number" class="outline-none focus:outline-none text-center w-full font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700" value="0"/>
+                                <button type="button" data-action="increment" class="text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
+                                    <span class="m-auto text-2xl font-thin">+</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <img class="absolute right-0 top-1/2 w-[1000px] -translate-y-1/2 translate-x-1/4" src="https://www.pngfind.com/pngs/m/54-546688_healthy-food-png-transparent-png.png" alt="img"/>
+                </form>
+                <img id="imgMenu" class="absolute right-0 top-1/2 w-[1000px] -translate-y-1/2 translate-x-1/4" src="" alt="img"/>
             </div>
         </div>
     </div>
@@ -169,7 +146,49 @@
     </style>
 
     <script>
-        function show() {
+        function show(data) {
+
+            document.getElementById("sweetnessMenu").innerHTML = ''
+            document.getElementById("acidityMenu").innerHTML = ''
+            document.getElementById("aromaticityMenu").innerHTML = ''
+            document.getElementById("oillinessMenu").innerHTML = ''
+            cat = document.getElementById("formMenu").action
+            cat = cat.replace('0', data['id']);
+            document.getElementById("formMenu").action = cat
+
+            for (let i = 0; i < data['sweetness']; i++) {
+                document.getElementById("sweetnessMenu").innerHTML += `<div class="h-[16px] w-[16px] rounded-full bg-black"></div>`
+            }
+            for (let i = data['sweetness']; i < 5; i++) {
+                document.getElementById("sweetnessMenu").innerHTML += `<div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>`
+            }
+
+            for (let i = 0; i < data['acidity']; i++) {
+                document.getElementById("acidityMenu").innerHTML += `<div class="h-[16px] w-[16px] rounded-full bg-black"></div>`
+            }
+            for (let i = data['acidity']; i < 5; i++) {
+                document.getElementById("acidityMenu").innerHTML += `<div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>`
+            }
+
+            for (let i = 0; i < data['aromaticity']; i++) {
+                document.getElementById("aromaticityMenu").innerHTML += `<div class="h-[16px] w-[16px] rounded-full bg-black"></div>`
+            }
+            for (let i = data['aromaticity']; i < 5; i++) {
+                document.getElementById("aromaticityMenu").innerHTML += `<div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>`
+            }
+
+            for (let i = 0; i < data['oilliness']; i++) {
+                document.getElementById("oillinessMenu").innerHTML += `<div class="h-[16px] w-[16px] rounded-full bg-black"></div>`
+            }
+            for (let i = data['oilliness']; i < 5; i++) {
+                document.getElementById("oillinessMenu").innerHTML += `<div class="h-[16px] w-[16px] rounded-full border-[2px] border-black"></div>`
+            }
+
+            document.getElementById("nameMenu").innerHTML = data['name']
+            document.getElementById("costMenu").innerHTML = data['cost'] + 'KZT'
+            document.getElementById("bodyMenu").innerHTML = data['body']
+            document.getElementById("imgMenu").setAttribute("src", data['image'])
+
             const addCart = document.querySelector("#addCart")
             addCart.classList.remove("hidden")
         }

@@ -23,6 +23,11 @@ class MenuFactory extends Factory
             'image' => 'https://sayavegan.com/wp-content/uploads/2022/05/DSC05908-removebg-preview.png',
             'restauran_id' => 1,
             'category_id' => 1,
+
+            'sweetness' => fake()->numberBetween(1, 5),
+            'acidity' => fake()->numberBetween(1, 5),
+            'aromaticity' => fake()->numberBetween(1, 5),
+            'oilliness' => fake()->numberBetween(1, 5),
         ];
     }
 }

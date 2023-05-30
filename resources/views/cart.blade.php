@@ -54,13 +54,13 @@
             @endforeach
         </div>
         <div class="flex justify-end">
-            <button class="flex h-[60px] w-[350px] items-center justify-between rounded-[12px] bg-[#EB5757] px-[30px] font-medium text-white">
+            <a href="{{ route('pay') }}" class="flex h-[60px] w-[350px] items-center justify-between rounded-[12px] bg-[#EB5757] px-[30px] font-medium text-white">
                 <div>{{ $sum_cart }}KZT</div>
                 <div class="flex items-center">
                     Checkout
                     <i class="far fa-arrow-right ml-[10px] text-[12px]"></i>
                 </div>
-            </button>
+            </a>
         </div>
     </div>
 @endsection

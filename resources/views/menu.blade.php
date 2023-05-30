@@ -3,18 +3,18 @@
 @section('content')
     <section class="mx-auto w-[1180px] mt-[100px] mb-[150px]">
         <div class="font-medium text-[18px] mb-[10px]">Restaurants</div>
-        <select class="border border-gray-500 w-[255px] h-[40px] rounded-[10px] px-[20px] mb-[170px]">
-            <option selected>Filter</option>
-            <option value="1">Hello</option>
-            <option value="1">Hello</option>
-        </select>
+        <form action="{{ route('home.index') }}">
+            <select onchange="this.form.submit()" class="border border-gray-500 w-[255px] h-[40px] rounded-[10px] px-[20px] mb-[170px]">
+                <option selected>Filter</option>
+                <option value="abc">A-Z</option>
+                <option value="raiting">Raiting</option>
+            </select>
+        </form>
         <div class="grid grid-cols-4 gap-[24px]">
             @foreach($restaurants as $restaurant)
                 <div class="bg-white border border-gray-200 rounded-[10px] shadow">
                     <a href="{{ route('menu.show', $restaurant) }}">
-                        <img class="rounded-t-[10px] h-[250px] w-[277px]"
-                             src="{{ $restaurant->image }}"
-                             alt=""/>
+                        <img class="rounded-t-[10px] h-[250px] w-[277px]" src="{{ $restaurant->image }}" alt=""/>
                     </a>
                     <div class="px-[40px] py-5">
                         <a href="#">
@@ -36,9 +36,7 @@
 
     <x-contact-us/>
 
-    <section class="mx-auto w-[1250px] mt-[190px]">
-        <img src="{{ asset('assets/img/last_section.svg') }}" alt="img">
-    </section>
+    <x-get-start/>
 
     <style>
         .selected {

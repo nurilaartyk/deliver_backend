@@ -59,40 +59,11 @@
         </div>
     </section>
 
-    <section class="mx-auto w-[1300px] mb-[85px]">
-        <div class="flex justify-between items-end">
-            <div>
-                <div class="text-[18px] font-semibold text-[#EB5757] mb-[20px]">OUR MENU</div>
-                <div class="text-[45px] font-bold text-[#333333]">Restaurants with<br/>Kazakh national<br/>cuisine</div>
-            </div>
-            <div class="flex gap-[36px]">
-                <img src="{{ asset('assets/img/left.svg') }}" alt="img">
-                <img src="{{ asset('assets/img/right.svg') }}" alt="img">
-            </div>
-        </div>
-        <div class="flex justify-between items-center">
-            <div
-                class="scrollbar-custom overflow-y-auto overflow-x-hidden h-[570px] inline-block space-y-[30px] pr-[90px] pl-[10px]">
-                @foreach([1, 2, 3, 4, 5, 6, 7, 8, 9] as $item)
-                    <div
-                        class="{{ $item == 1 ? 'selected' : 'not-selected' }} rounded-full w-[255px] h-[85px] text-[24px] font-medium flex items-center justify-center">
-                        Sandyq
-                    </div>
-                @endforeach
-            </div>
-            <div></div>
-            <div
-                class="scrollbar-hidden flex flex-row overflow-x-auto h-[500px] w-[760px] space-x-[30px] rounded-[32px]">
-                @foreach([1, 2, 3, 4, 5, 6, 7, 8, 9] as $item)
-                    <img class="rounded-[32px] inline-block w-[440px] h-[500px]"
-                         src="https://i.pinimg.com/736x/be/f1/b5/bef1b53bd373754094aba64102f06f87.jpg" alt="img">
-                @endforeach
-            </div>
-            <div></div>
-        </div>
-    </section>
+    <livewire:show-category/>
 
     <x-contact-us/>
+
+    <x-get-start/>
 
     <style>
         .selected {

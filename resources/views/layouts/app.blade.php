@@ -24,8 +24,8 @@
 @endif
 
 @livewireScripts
-@livewire('livewire-ui-modal')
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"/>
 
 </body>

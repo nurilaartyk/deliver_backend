@@ -17,6 +17,12 @@ return new class extends Migration
             $table->text('body');
             $table->integer('cost');
             $table->text('image');
+
+            $table->integer('sweetness');
+            $table->integer('acidity');
+            $table->integer('aromaticity');
+            $table->integer('oilliness');
+
             $table->integer('restauran_id');
             $table->integer('category_id');
             $table->timestamps();

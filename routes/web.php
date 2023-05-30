@@ -17,16 +17,20 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-Route::get('/menu', [\App\Http\Controllers\MenuController::class, 'index'])->name('menu.index');
+Route::get('/restauran', [\App\Http\Controllers\MenuController::class, 'index'])->name('menu.index');
 Route::get('/menu/{restauran}', [\App\Http\Controllers\MenuController::class, 'show'])->name('menu.show');
 Route::get('/recipe', [\App\Http\Controllers\RecipeController::class, 'index'])->name('recipe.index');
 Route::get('/recipe/{recipe}', [\App\Http\Controllers\RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact/create', [\App\Http\Controllers\ContactController::class, 'update'])->name('contact.store');
-Route::get('/about', [\App\Http\Controllers\HomeController::class, 'index'])->name('about.index');
+Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->name('about.index');
 Route::get('/favorite', [\App\Http\Controllers\FavoriteController::class, 'index'])->name('favorite.index');
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search.index');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/pay', [\App\Http\Controllers\CartController::class, 'pay'])->name('pay');
+    Route::post('/pay/order', [\App\Http\Controllers\CartController::class, 'order'])->name('order');
+    Route::post('/cart/add/{menu}', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
     Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/up/{cart}', [\App\Http\Controllers\CartController::class, 'up'])->name('cart.up');
     Route::post('/cart/down/{cart}', [\App\Http\Controllers\CartController::class, 'down'])->name('cart.down');

@@ -10,7 +10,18 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $restaurants = Restauran::all();
+        $query = Restauran::query();
+
+        if (request('abc')) {
+            $query->orderBy('name');
+        }
+
+        if (request('rating')) {
+            $query->orderBy('rating', 'desc');
+        }
+
+        $restaurants = $query->get();
+
         return view('menu')->with(compact('restaurants'));
     }
 

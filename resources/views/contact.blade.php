@@ -48,6 +48,13 @@
                             <div class="text-[12px] font-medium">Phone Number</div>
                             <input name="number" class="w-full border-b border-[#8D8D8D]" type="text"/>
                         </div>
+                        <div>
+                            <select class="w-full border-b border-[#8D8D8D]" name="restauran_id">
+                                @foreach($restaurans as $restauran)
+                                    <option value="{{ $restauran->id }}">{{ $restauran->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="col-span-2">
                             <div class="mb-[15px] font-semibold">Rating by Star</div>
                             <div class="flex gap-[10px]">
@@ -102,7 +109,7 @@
                             </div>
                         </div>
                         <div class="col-span-2">
-                            <div class="text-[12px] font-medium">Phone Number</div>
+                            <div class="text-[12px] font-medium">Message</div>
                             <input name="body" class="w-full border-b border-[#8D8D8D]" type="text" placeholder="Write your message..."/>
                         </div>
                         <div class="col-span-2 flex justify-end">
