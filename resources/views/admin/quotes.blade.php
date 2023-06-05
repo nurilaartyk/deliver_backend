@@ -45,13 +45,13 @@
 									№
 								</th>
 								<th class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
-									Цитата
+									User Name
 								</th>
 								<th class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
-									Автор
+									Status
 								</th>
 								<th class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
-									Действие
+									Action
 								</th>
 							</tr>
 							</thead>
@@ -60,13 +60,12 @@
 								<tr class="hover:bg-gray-100">
 									<td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">#{{$quote->id}}</td>
 									<td class="p-4 text-sm font-normal text-gray-500 lg:p-5">
-										<div class="text-base font-semibold text-gray-900 w-[300px] line-clamp-1">{{$quote->quote}}</div>
+										<div class="text-base font-semibold text-gray-900 w-[300px] line-clamp-1">{{$quote->user->name}}</div>
 									</td>
 									<td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">{{$quote->author}}</td>
 									<td class="p-4 space-x-2 whitespace-nowrap lg:p-5">
-										<a href="javascript:deleteQuote({{$quote->id}})" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-800 hover:scale-[1.02] transition-all">
-											<i class="fas fa-trash mr-2"></i>
-											Удалить
+										<a href="javascript:deleteQuote({{$quote->id}})" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 hover:scale-[1.02] transition-all">
+											Next
 										</a>
 									</td>
 								</tr>
@@ -115,7 +114,7 @@
 			<div class="relative bg-white rounded-2xl shadow-lg">
 				<div class="p-6 pt-0 text-center">
 					<i class="far fa-exclamation-circle text-[70px] text-red-500 mt-6"></i>
-					<h3 class="mt-5 mb-6 text-xl font-normal text-gray-500">Вы уверены, что хотите удалить эту цытату?</h3>
+					<h3 class="mt-5 mb-6 text-xl font-normal text-gray-500">Вы уверены, что хотите удалить эту?</h3>
 					<form id="deleteQuoteForm" action="" method="post" class="inline-flex">
 						@csrf
 						@method('delete')

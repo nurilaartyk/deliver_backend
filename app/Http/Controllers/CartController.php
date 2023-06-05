@@ -18,6 +18,9 @@ class CartController extends Controller
             return $cart->menu->cost * $cart->count;
         });
         $sum_cart += 1000;
+        if ($sum_cart >= 30000) {
+            $sum_cart = $sum_cart * 0.9;
+        }
         $credit_cart = CreditCard::where('user_id', auth()->user()->id)->get();
         return view('pay')
             ->with(compact('sum_cart'))

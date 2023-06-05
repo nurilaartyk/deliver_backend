@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/restauran', [\App\Http\Controllers\MenuController::class, 'index'])->name('menu.index');
 Route::get('/menu/{restauran}', [\App\Http\Controllers\MenuController::class, 'show'])->name('menu.show');
+Route::post('/menu/{restauran}', [\App\Http\Controllers\MenuController::class, 'search'])->name('menu.search');
 Route::get('/recipe', [\App\Http\Controllers\RecipeController::class, 'index'])->name('recipe.index');
 Route::get('/recipe/{recipe}', [\App\Http\Controllers\RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
@@ -48,7 +49,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::name('admin.')->prefix('admin')->group(function () {
+Route::middleware('can:admin')->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', \App\Http\Controllers\Admin\Post\InactiveController::class)->name('index');
     Route::get('/posts', \App\Http\Controllers\Admin\Post\IndexController::class)->name('posts');
     Route::get('/posts/{post}', \App\Http\Controllers\Admin\Post\ShowController::class)->name('posts.show');
@@ -60,7 +61,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::delete('/users/{user}', \App\Http\Controllers\Admin\User\DeleteController::class)->name('users.delete');
     Route::get('/quotes', \App\Http\Controllers\Admin\Quote\IndexController::class)->name('quotes');
     Route::post('/quotes', \App\Http\Controllers\Admin\Quote\StoreController::class)->name('quotes.store');
-    Route::delete('/quotes/{quote}', \App\Http\Controllers\Admin\Quote\DeleteController::class)->name('quotes.delete');
+    Route::post('/quotes/{quote}', \App\Http\Controllers\Admin\Quote\DeleteController::class)->name('quotes.delete');
     Route::get('/ads', \App\Http\Controllers\Admin\Ad\IndexController::class)->name('ad');
     Route::post('/ads', \App\Http\Controllers\Admin\Ad\StoreController::class)->name('ad.store');
     Route::delete('/ads/{ad}', \App\Http\Controllers\Admin\Ad\DeleteController::class)->name('ad.delete');

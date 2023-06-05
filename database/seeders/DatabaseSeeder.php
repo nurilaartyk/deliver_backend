@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'User',
             'email' => 'user@gmail.com',
             'number' => '87776665544',
+            'type' => 2,
             'email_verified_at' => now(),
             'password' => Hash::make('asdasdasd'),
             'remember_token' => Str::random(10),

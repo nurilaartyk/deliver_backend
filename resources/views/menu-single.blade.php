@@ -2,39 +2,46 @@
 
 @section('content')
     <section class="mx-auto w-[1180px] mt-[100px] mb-[150px]">
-        <div class="font-medium text-[18px] mb-[10px]"> Sandyq Menu</div>
-        <select class="border border-gray-500 w-[255px] h-[40px] rounded-[10px] px-[20px] mb-[170px]">
-            <option selected>Category</option>
-            <option value="1">Hello</option>
-            <option value="1">Hello</option>
-        </select>
-        <div class="grid grid-cols-4 gap-[24px]">
-            @foreach($menus as $menu)
-                <div class="relative rounded-[50px] border border-gray-200 shadow-lg">
-                    <form class="absolute top-[25px] left-[25px]" method="post" action="{{ route('profile.favorite.add', $menu) }}">
-                        @csrf
-                        <button type="submit">
-                            @auth
-                                @if($menu->isFavoritedBy(auth()->user()))
-                                    <img src="{{ asset('assets/img/favorite_full.svg') }}" alt=""/>
+        <div class="font-medium text-[18px] mb-[10px]"> Menu</div>
+        <form action="{{ route('menu.search', $restauran) }}" method="post">
+            @csrf
+            <select name="category_id" onchange="this.form.submit()" class="border border-gray-500 w-[255px] h-[40px] rounded-[10px] px-[20px] mb-[170px]">
+                <option value="0" selected>All</option>
+                <option value="1">Hot dishes</option>
+                <option value="2">Soups</option>
+                <option value="3">Snack dishes</option>
+                <option value="4">Cold dishes</option>
+                <option value="5">Sweets</option>
+                <option value="6">Beverages</option>
+            </select>
+            <div class="grid grid-cols-4 gap-[24px]">
+                @foreach($menus as $menu)
+                    <div class="relative rounded-[50px] border border-gray-200 shadow-lg">
+                        <form class="absolute top-[25px] left-[25px]" method="post" action="{{ route('profile.favorite.add', $menu) }}">
+                            @csrf
+                            <button type="submit">
+                                @auth
+                                    @if($menu->isFavoritedBy(auth()->user()))
+                                        <img src="{{ asset('assets/img/favorite_full.svg') }}" alt=""/>
+                                    @else
+                                        <img src="{{ asset('assets/img/favorite.svg') }}" alt=""/>
+                                    @endif
                                 @else
                                     <img src="{{ asset('assets/img/favorite.svg') }}" alt=""/>
-                                @endif
-                            @else
-                                <img src="{{ asset('assets/img/favorite.svg') }}" alt=""/>
-                            @endauth
-                        </button>
-                    </form>
-                    <a href="javascript:show({{$menu}})">
-                        <img class="h-[250px] object-cover object-center" src="{{ $menu->image }}" alt="img"/>
-                    </a>
-                    <div class="px-[40px] py-5">
-                        <h5 class="mb-2 text-[16px] tracking-tight text-gray-900">{{ $menu->name }}</h5>
-                        <div>{{ $menu->cost }}KZT</div>
+                                @endauth
+                            </button>
+                        </form>
+                        <a href="javascript:show({{$menu}})">
+                            <img class="h-[250px] object-cover object-center" src="{{ $menu->image }}" alt="img"/>
+                        </a>
+                        <div class="px-[40px] py-5">
+                            <h5 class="mb-2 text-[16px] tracking-tight text-gray-900">{{ $menu->name }}</h5>
+                            <div>{{ $menu->cost }}KZT</div>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        </form>
     </section>
 
     <x-contact-us/>

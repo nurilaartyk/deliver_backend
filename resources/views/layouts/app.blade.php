@@ -8,8 +8,6 @@
     <link rel="icon" href="{{ asset('assets/img/favicon.png') }}">
     @vite('resources/css/app.css')
     @livewireStyles
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
 
@@ -23,10 +21,10 @@
     <x-footer/>
 @endif
 
-@livewireScripts
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"/>
 
+@livewireScripts
 </body>
 </html>

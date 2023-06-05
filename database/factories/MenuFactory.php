@@ -24,6 +24,8 @@ class MenuFactory extends Factory
             'restauran_id' => 1,
             'category_id' => 1,
 
+            'filter' => 1,
+
             'sweetness' => fake()->numberBetween(1, 5),
             'acidity' => fake()->numberBetween(1, 5),
             'aromaticity' => fake()->numberBetween(1, 5),

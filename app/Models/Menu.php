@@ -12,6 +12,12 @@ class Menu extends Model
 
     protected $guarded = [];
 
+
+    public function restauran()
+    {
+        return $this->belongsTo(Restauran::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

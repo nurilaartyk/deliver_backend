@@ -18,10 +18,9 @@
             @endforeach
         </div>
         <div></div>
-        <div
-            class="scrollbar-hidden flex flex-row overflow-x-auto h-[500px] w-[760px] space-x-[30px] rounded-[32px]">
+        <div class="scrollbar-hidden flex flex-row overflow-x-auto h-[500px] w-[760px] space-x-[30px] rounded-[32px]">
             @foreach($menus as $menu)
-                <img src="{{ $menu->image }}" class="rounded-[32px] inline-block w-[440px] h-[500px] object-cover" alt="img">
+                <img src="{{ $menu->restauran->image }}" class="rounded-[32px] inline-block w-[440px] h-[500px] object-cover" alt="img">
             @endforeach
         </div>
         <div></div>

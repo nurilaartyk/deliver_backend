@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Quote;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Quote;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,10 @@ class DeleteController extends Controller
         $this->middleware('auth');
     }
 
-    public function __invoke(Quote $quote)
+    public function __invoke(Order $quote)
     {
-        $quote->delete();
+        $quote->status++;
+        $quote->save();
         return redirect()->back()
             ->with('status', '200')
             ->with('message', 'Успешно удалено');

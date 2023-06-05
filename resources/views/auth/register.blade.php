@@ -20,7 +20,7 @@
                 <div class="mb-[35px] grid grid-cols-2 gap-[20px]">
                     <div>
                         <div class="mb-[15px] text-[16px]">Full name</div>
-                        <input name="full_name" type="text" class="h-[57px] w-full rounded-[10px] border border-[#ADADAD] bg-white px-[25px]" placeholder="Full name" />
+                        <input name="name" type="text" class="h-[57px] w-full rounded-[10px] border border-[#ADADAD] bg-white px-[25px]" placeholder="Full name" />
                     </div>
                     <div>
                         <div class="mb-[15px] text-[16px]">Contact Number</div>

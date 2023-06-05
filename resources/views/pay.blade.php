@@ -27,6 +27,7 @@
                         <div>
                             <div class="mb-[20px]">Select shipping</div>
                             <select class="block h-[60px] w-full rounded-[5px] bg-white p-2.5 text-sm text-[#2D3748]">
+                                <option value="deliver">Pickup</option>
                                 <option value="deliver">Deliver</option>
                             </select>
                         </div>
@@ -51,7 +52,7 @@
                     </div>
                     <div class="mb-[20px] flex justify-between text-[18px] font-medium">
                         <div>Sub total</div>
-                        <div>15000 KZT</div>
+                        <div>{{ $sum_cart }} KZT</div>
                     </div>
                     <div class="mb-[20px] flex justify-between text-[18px] font-medium">
                         <div>Shipping</div>
@@ -59,7 +60,7 @@
                     </div>
                     <div class="mb-[20px] flex justify-between text-[18px] font-medium">
                         <div>Total</div>
-                        <div>15000 KZT</div>
+                        <div>{{ $sum_cart }} KZT</div>
                     </div>
                 </div>
             </div>

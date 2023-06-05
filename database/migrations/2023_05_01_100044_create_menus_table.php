@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('cost');
             $table->text('image');
 
+            $table->integer('filter');
+
             $table->integer('sweetness');
             $table->integer('acidity');
             $table->integer('aromaticity');

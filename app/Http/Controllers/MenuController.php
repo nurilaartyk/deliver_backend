@@ -10,25 +10,25 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $query = Restauran::query();
-
-        if (request('abc')) {
-            $query->orderBy('name');
-        }
-
-        if (request('rating')) {
-            $query->orderBy('rating', 'desc');
-        }
-
-        $restaurants = $query->get();
-
+        $restaurants = Restauran::all();
         return view('menu')->with(compact('restaurants'));
     }
 
     public function show(Restauran $restauran)
     {
         $menus = Menu::where('restauran_id', $restauran->id)->get();
-        return view('menu-single')->with(compact('menus'));
+        return view('menu-single')->with(compact('menus'))->with(compact('restauran'));
+    }
+
+    public function search(Restauran $restauran, Request $request)
+    {
+        if ($request->category_id == 0) {
+            $menus = Menu::where('restauran_id', $restauran->id)->get();
+        } else {
+            $menus = Menu::where('restauran_id', $restauran->id)->where('filter', $request->category_id)->get();
+        }
+
+        return view('menu-single')->with(compact('menus'))->with(compact('restauran'));
     }
 
     public function oreder()
